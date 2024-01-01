@@ -2,6 +2,7 @@ package com.driver;
 
 public class Pizza {
 
+    private int basePrice;
     private int price;
     private Boolean isVeg;
     private String bill;
@@ -14,16 +15,16 @@ public class Pizza {
 
     private boolean isBillGenerated;
 
-    private int totalBill;
 
     public Pizza(Boolean isVeg){
         this.isVeg = isVeg;
         // your code goes here
-        if(isVeg) price = 300;
-        else  price = 400;
+        if(isVeg) basePrice = 300;
+        else  basePrice = 400;
 
         bill = "";
-        totalBill += price;
+
+        price = basePrice;
     }
 
     public int getPrice(){
@@ -34,7 +35,7 @@ public class Pizza {
         // your code goes here
         if(!this.addCheese){
             this.addCheese = true;
-            totalBill += 80;
+            this.price += 80;
         }
     }
 
@@ -42,8 +43,8 @@ public class Pizza {
         // your code goes here
         if(!this.addTopping) {
             this.addTopping = true;
-            if(isVeg) totalBill += 70;
-            else totalBill += 120;
+            if(isVeg) this.price += 70;
+            else this.price += 120;
         }
     }
 
@@ -51,13 +52,13 @@ public class Pizza {
         // your code goes here
         if(!this.addPaperBag){
             this.addPaperBag = true;
-            totalBill += 20;
+            this.price += 20;
         }
     }
 
     private void addBill(){
 
-        bill += "Base Price Of The Pizza: " + price + '\n';
+        bill += "Base Price Of The Pizza: " + basePrice + '\n';
 
         if(addCheese) bill += "Extra Cheese Added: 80" + '\n';
         if(addTopping){
@@ -67,7 +68,7 @@ public class Pizza {
 
         if(addPaperBag) bill += "Paperbag Added: 20" + '\n';
 
-        bill += "Total Price: " + totalBill;
+        bill += "Total Price: " + this.price;
     }
 
     public String getBill(){
