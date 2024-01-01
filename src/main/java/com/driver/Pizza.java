@@ -22,9 +22,13 @@ public class Pizza {
         if(isVeg) basePrice = 300;
         else  basePrice = 400;
 
-        bill = "";
+        this.bill = "";
+        this.addPaperBag = false;
+        this.addCheese = false;
+        this.addTopping = false;
+        this.isBillGenerated = false;
 
-        price = basePrice;
+        this.price = basePrice;
     }
 
     public int getPrice(){
@@ -68,7 +72,7 @@ public class Pizza {
 
         if(addPaperBag) bill += "Paperbag Added: 20" + '\n';
 
-        bill += "Total Price: " + this.price;
+        bill += "Total Price: " + this.price + '\n';
     }
 
     public String getBill(){
